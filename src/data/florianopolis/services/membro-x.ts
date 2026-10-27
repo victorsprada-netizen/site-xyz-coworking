@@ -1,4 +1,4 @@
-import membrofloripaImg from "../../../../public/images/DSC02319.png";
+import membrofloripaImg from "../../../../public/images/endereco-comercial-membro-x-xyz-florianopolis-floripa.png";
 import { IServiceItem } from "@/data/types";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
