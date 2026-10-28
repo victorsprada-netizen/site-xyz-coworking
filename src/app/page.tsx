@@ -41,6 +41,12 @@ const DynamicMapSection = dynamic(() =>
   import("../components/MapSection/MapSection").then((mod) => mod.MapSection)
 );
 
+const DynamicUnitFactsSection = dynamic(() =>
+  import("../components/Home/UnitFactsSection/UnitFactsSection").then(
+    (mod) => mod.UnitFactsSection
+  )
+);
+
 export default function Home() {
   return (
     <div>
@@ -64,6 +70,8 @@ export default function Home() {
             <DynamicMapSection />
           </Stack>
         </Stack>
+
+        <DynamicUnitFactsSection />
       </main>
     </div>
   );
