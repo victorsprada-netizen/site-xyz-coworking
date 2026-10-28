@@ -12,6 +12,7 @@ import { UtmSourceUrlSync } from "@/components/common/UtmSourceUrlSync";
 import { siteData } from "@/data/sites";
 import AbTestProvider from "@/hooks/AbTestProvider";
 import { connection } from "next/server";
+import { getStructuredData } from "@/data/structured-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteData.siteUrl),
@@ -73,6 +74,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         )}
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getStructuredData()).replace(/</g, "\\u003c"),
+          }}
+        />
 
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>

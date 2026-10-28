@@ -50,11 +50,45 @@ export interface IServiceItem {
 
 export type TUtmSourceKeys = "googleads" | "instagram";
 
+// Dados usados nos dados estruturados (JSON-LD) e no llms.txt
+export interface IUnitInfo {
+  name: string;
+  streetAddress: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  postalCode?: string;
+  geo?: {
+    latitude: number;
+    longitude: number;
+  };
+  openingHours: {
+    days: (
+      | "Monday"
+      | "Tuesday"
+      | "Wednesday"
+      | "Thursday"
+      | "Friday"
+      | "Saturday"
+      | "Sunday"
+    )[];
+    opens: string;
+    closes: string;
+  }[];
+  areaM2: number;
+  privateRooms: number;
+  // Outros espaços, como o Vitor descreveu (ex.: "10 salas de reunião e atendimento")
+  otherSpaces: string[];
+  foundingDate: string;
+  foundingLabel: string;
+}
+
 export interface ISiteData {
   utmSourceMessages?: Partial<Record<TUtmSourceKeys, string>> & {
     fallback: string;
   };
   siteUrl: string;
+  unitInfo: IUnitInfo;
   filialCNPJ: string;
   filialName: string;
   pricesTableFileId?: string;
