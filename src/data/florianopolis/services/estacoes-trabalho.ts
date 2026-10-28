@@ -8,7 +8,7 @@ import { membroX } from "./membro-x";
 
 export const estacoesTrabalho: IServiceItem = {
   title: "Estações de Trabalho",
-  seoTitle: "Estações de Trabalho em Balneário Camboriú",
+  seoTitle: "Estações de Trabalho em Florianópolis",
   description:
     "Espaços compartilhados e bem estruturados, ideais para profissionais que valorizam foco e flexibilidade. Uma solução prática para quem busca produtividade em um ambiente colaborativo e inspirador.",
   image: estacoesImg.src,
