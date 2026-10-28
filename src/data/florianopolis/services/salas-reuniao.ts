@@ -8,7 +8,7 @@ import { membroX } from "./membro-x";
 
 export const salasReuniao: IServiceItem = {
   title: "Salas de Reunião",
-  seoTitle: "Salas de Reunião em Balneário Camboriú",
+  seoTitle: "Salas de Reunião em Florianópolis",
   description:
     "Estrutura completa para encontros profissionais, com ambientes climatizados, TV, Wi-Fi e recepção. O espaço ideal para transmitir credibilidade, acolher clientes e fechar negócios com eficiência.",
   image: reunioesfloripaImg.src,
