@@ -26,10 +26,13 @@ export async function generateMetadata({
   return {
     title: service.seoTitle || service.title,
     description: service.description,
+    alternates: {
+      canonical: `/servicos/${service.slug}`,
+    },
     openGraph: {
       title: service.seoTitle || service.title,
       description: service.description,
-      url: `https://bc.xyzcoworking.com/servicos/${service.slug}`,
+      url: `/servicos/${service.slug}`,
       images: [
         {
           url: service.image,

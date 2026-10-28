@@ -9,6 +9,8 @@ export interface IResponsiveComponentProps {
   xl?: ReactElement;
 }
 
+const breakpoints = ["xs", "sm", "md", "lg", "xl"] as const;
+
 export const ResponsiveComponent = ({
   xs,
   sm,
@@ -24,23 +26,27 @@ export const ResponsiveComponent = ({
     xl: xl || lg || md || sm || xs,
   };
 
+  // Cada versão é renderizada uma única vez, visível nos breakpoints em que
+  // é usada, para o conteúdo não se repetir no HTML
+  const uniqueComponents = Array.from(new Set(Object.values(components)));
+
   return (
     <>
-      <Box sx={{ display: { xs: "block", sm: "none" } }}>{components.xs}</Box>
-
-      <Box sx={{ display: { xs: "none", sm: "block", md: "none" } }}>
-        {components.sm}
-      </Box>
-
-      <Box sx={{ display: { xs: "none", md: "block", lg: "none" } }}>
-        {components.md}
-      </Box>
-
-      <Box sx={{ display: { xs: "none", lg: "block", xl: "none" } }}>
-        {components.lg}
-      </Box>
-
-      <Box sx={{ display: { xs: "none", xl: "block" } }}>{components.xl}</Box>
+      {uniqueComponents.map((component, index) => (
+        <Box
+          key={index}
+          sx={{
+            display: Object.fromEntries(
+              breakpoints.map((breakpoint) => [
+                breakpoint,
+                components[breakpoint] === component ? "block" : "none",
+              ]),
+            ),
+          }}
+        >
+          {component}
+        </Box>
+      ))}
     </>
   );
 };

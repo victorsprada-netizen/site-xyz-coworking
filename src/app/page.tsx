@@ -2,6 +2,13 @@ import { PhraseSection } from "@/components/Home/PhraseSection/PhraseSection";
 import { Stack } from "@mui/material";
 import { HomeHeroSection } from "@/components/Home/HomeHeroSection/HomeHeroSection";
 import dynamic from "next/dynamic";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export const dynamicParams = false;
 export const revalidate = 0;
