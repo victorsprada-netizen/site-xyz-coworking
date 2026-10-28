@@ -14,6 +14,7 @@ import AbTestProvider from "@/hooks/AbTestProvider";
 import { connection } from "next/server";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteData.siteUrl),
   title: siteData.homeData.metaTitle,
   description: siteData.homeData.metaDescription,
   icons: {
