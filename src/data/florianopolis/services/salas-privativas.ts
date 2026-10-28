@@ -7,7 +7,7 @@ import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
 
 export const salasPrivativas: IServiceItem = {
   title: "Salas Privativas",
-  seoTitle: "Salas Privativas em Balneário Camboriú",
+  seoTitle: "Salas Privativas em Florianópolis",
   description:
     "Tenha total privacidade e um espaço exclusivo, com estrutura completa para o seu negócio unindo sofisticação, profissionalismo e a presença em um dos ecossistemas mais promissores do país. Ideal para empreendedores e empresas que valorizam credibilidade.",
   image: privativafloripaImg.src,

@@ -9,7 +9,7 @@ import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 export const membroX: IServiceItem = {
   title: "Endereço Comercial / Membro X",
   seoTitle:
-    "Membro X — Endereço Comercial e Benefícios Exclusivos em Balneário Camboriú",
+    "Membro X — Endereço Comercial e Benefícios Exclusivos em Florianópolis",
   description:
     "Aumente sua presença profissional em Florianópolis com um endereço comercial qualificado e benefícios exclusivos. Ideal para negócios digitais, autônomos e empresas que buscam economia e credibilidade em um dos maiores polos de inovação do país.",
   image: membrofloripaImg.src,
