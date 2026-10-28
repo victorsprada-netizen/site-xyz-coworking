@@ -31,6 +31,7 @@ export const balnearioData: ISiteData = {
     googleads: "Olá! Vim pelo anúncio do Google e",
     fallback: "Olá! Vim pelo site e",
   },
+  siteUrl: "https://bc.xyzcoworking.com",
   filialCNPJ: "57.658.953/0001-69",
   filialName: "Balneário Camboriú",
   pricesTableFileId: "1i8aIp7Aav2WH_f1cJu5xmwPTbEdyaURjhos60ltoSO8",

@@ -54,6 +54,7 @@ export interface ISiteData {
   utmSourceMessages?: Partial<Record<TUtmSourceKeys, string>> & {
     fallback: string;
   };
+  siteUrl: string;
   filialCNPJ: string;
   filialName: string;
   pricesTableFileId?: string;
