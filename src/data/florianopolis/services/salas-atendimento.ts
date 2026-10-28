@@ -1,4 +1,4 @@
-import salaImg from "../../../../public/images/IMG_3139.png";
+import salaImg from "../../../../public/images/salas-para-atendimento-xyz-florianopolis-floripa.png";
 import { IServiceItem } from "@/data/types";
 import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
 import DomainVerificationIcon from "@mui/icons-material/DomainVerification";
