@@ -77,6 +77,17 @@ export interface IUnitInfo {
   }[];
   areaM2: number;
   privateRooms: number;
+  // Quantidade aproximada informada pelo Vitor (ex.: "~380" posições de trabalho)
+  workstations: {
+    value: string;
+    label: string;
+  };
+  // Nota e avaliações copiadas do Perfil da Empresa no Google: atualizar manualmente
+  googleProfile: {
+    url: string;
+    rating: number;
+    reviewCount: number;
+  };
   // Outros espaços, como o Vitor descreveu (ex.: "10 salas de reunião e atendimento")
   otherSpaces: string[];
   foundingDate: string;

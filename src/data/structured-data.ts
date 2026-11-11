@@ -1,3 +1,4 @@
+import { faqItems } from "./faq";
 import { sites, siteData } from "./sites";
 import { IServicePlan, ISiteData } from "./types";
 
@@ -69,7 +70,8 @@ const getLocalBusiness = (site: ISiteData) => {
       latitude: unitInfo.geo.latitude,
       longitude: unitInfo.geo.longitude,
     },
-    hasMap: site.address.href,
+    hasMap: unitInfo.googleProfile.url,
+    sameAs: [unitInfo.googleProfile.url, site.socials.instagram],
     openingHoursSpecification: unitInfo.openingHours.map((hours) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: hours.days,
@@ -84,6 +86,7 @@ const getLocalBusiness = (site: ISiteData) => {
     },
     amenityFeature: [
       `${unitInfo.privateRooms} salas privativas`,
+      `${unitInfo.workstations.value} ${unitInfo.workstations.label}`,
       ...unitInfo.otherSpaces,
     ].map((name) => ({
       "@type": "LocationFeatureSpecification",
@@ -127,6 +130,20 @@ export const getStructuredData = () => ({
   "@graph": [getOrganization(), getLocalBusiness(siteData)],
 });
 
+// Só na home, onde o FAQ aparece na página
+export const getFaqStructuredData = () => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+});
+
 const getUnitSummary = (site: ISiteData) =>
   `${site.unitInfo.areaM2.toLocaleString("pt-BR")} m², ${site.unitInfo.privateRooms} salas privativas, ${site.unitInfo.foundingLabel}`;
 
@@ -143,8 +160,10 @@ export const getLlmsTxt = () => {
     `- Endereço: ${address.line1}, ${address.line2}`,
     `- Área: ${unitInfo.areaM2.toLocaleString("pt-BR")} m²`,
     `- Salas privativas: ${unitInfo.privateRooms}`,
+    `- ${unitInfo.workstations.value} ${unitInfo.workstations.label}`,
     ...unitInfo.otherSpaces.map((space) => `- ${space}`),
     `- Em funcionamento ${unitInfo.foundingLabel}`,
+    `- Avaliação no Google: ${unitInfo.googleProfile.rating.toLocaleString("pt-BR", { minimumFractionDigits: 1 })} de 5, com ${unitInfo.googleProfile.reviewCount.toLocaleString("pt-BR")} avaliações (${unitInfo.googleProfile.url})`,
     `- Horário: ${siteData.workingHours.join("; ")}`,
     `- Telefone: ${contact.phoneNumber}`,
     `- WhatsApp: ${contact.whatsappNumber}`,
@@ -162,6 +181,9 @@ export const getLlmsTxt = () => {
       return `- [${service.title}](${siteData.siteUrl}/servicos/${service.slug}): ${stripHtml(service.description)} Preços: ${prices}.`;
     }),
     "",
+    "## Perguntas frequentes",
+    "",
+    ...faqItems.flatMap((item) => [`### ${item.question}`, "", item.answer, ""]),
     "## Rede XYZ Coworking",
     "",
     ...Object.values(sites).map(

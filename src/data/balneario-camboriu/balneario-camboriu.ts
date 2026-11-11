@@ -49,6 +49,12 @@ export const balnearioData: ISiteData = {
     ],
     areaM2: 200,
     privateRooms: 12,
+    workstations: { value: "~40", label: "estações de trabalho" },
+    googleProfile: {
+      url: "https://www.google.com/maps?cid=9047180115617137027",
+      rating: 5,
+      reviewCount: 130,
+    },
     otherSpaces: ["2 salas de atendimento", "1 sala de reunião (Grécia)"],
     foundingDate: "2025-04",
     foundingLabel: "desde abril de 2025",

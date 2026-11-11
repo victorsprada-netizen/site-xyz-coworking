@@ -3,6 +3,7 @@ import { Stack } from "@mui/material";
 import { HomeHeroSection } from "@/components/Home/HomeHeroSection/HomeHeroSection";
 import dynamic from "next/dynamic";
 import { Metadata } from "next";
+import { getFaqStructuredData } from "@/data/structured-data";
 
 export const metadata: Metadata = {
   alternates: {
@@ -72,6 +73,16 @@ export default function Home() {
         </Stack>
 
         <DynamicUnitFactsSection />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getFaqStructuredData()).replace(
+              /</g,
+              "\\u003c"
+            ),
+          }}
+        />
       </main>
     </div>
   );

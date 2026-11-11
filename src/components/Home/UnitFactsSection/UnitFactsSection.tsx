@@ -1,8 +1,19 @@
 "use client";
 
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Button,
+  Container,
+  Stack,
+  Typography,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Animate } from "@/components/common/Animate";
 import { TrackingWrapper } from "@/components/common/TrackingWrapper";
+import { faqItems } from "@/data/faq";
 import { siteData, siteKey, sites } from "@/data/sites";
 import { IUnitInfo } from "@/data/types";
 import { useAbTest } from "@/hooks/useAbTest";
@@ -38,6 +49,7 @@ const getFacts = (unitInfo: IUnitInfo) => [
     value: String(unitInfo.privateRooms),
     label: "salas privativas",
   },
+  unitInfo.workstations,
   {
     value: getFoundingShort(unitInfo.foundingDate),
     label: "início das atividades",
@@ -56,6 +68,7 @@ export interface IUnitFactsSectionProps {}
 export const UnitFactsSection = (props: IUnitFactsSectionProps) => {
   const isGoogle = useAbTest();
   const { unitInfo } = siteData;
+  const { googleProfile } = unitInfo;
   const facts = getFacts(unitInfo);
 
   const otherUnits = Object.entries(sites)
@@ -82,17 +95,33 @@ export const UnitFactsSection = (props: IUnitFactsSectionProps) => {
 
             <Box
               display="grid"
-              gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr 1fr" }}
+              gridTemplateColumns={{
+                xs: "1fr",
+                sm: "1fr 1fr",
+                md: "1fr 1fr 1fr 1fr",
+              }}
             >
               {facts.map((fact, index) => (
                 <Box
                   key={fact.label}
                   sx={{
                     py: { xs: 3, sm: 4 },
-                    px: { xs: 0, sm: 4 },
-                    borderTop: { xs: index === 0 ? "none" : ".5px solid #d0d0d0", sm: "none" },
-                    borderLeft: { xs: "none", sm: index === 0 ? "none" : ".5px solid #d0d0d0" },
-                    pl: { sm: index === 0 ? 0 : 4 },
+                    pr: { xs: 0, sm: 4 },
+                    pl: {
+                      xs: 0,
+                      sm: index % 2 === 0 ? 0 : 4,
+                      md: index === 0 ? 0 : 4,
+                    },
+                    borderTop: {
+                      xs: index === 0 ? "none" : ".5px solid #d0d0d0",
+                      sm: index < 2 ? "none" : ".5px solid #d0d0d0",
+                      md: "none",
+                    },
+                    borderLeft: {
+                      xs: "none",
+                      sm: index % 2 === 0 ? "none" : ".5px solid #d0d0d0",
+                      md: index === 0 ? "none" : ".5px solid #d0d0d0",
+                    },
                   }}
                 >
                   <Animate {...animateProps}>
@@ -188,6 +217,71 @@ export const UnitFactsSection = (props: IUnitFactsSectionProps) => {
                     </TrackingWrapper>
                   </Stack>
                 </Animate>
+              ))}
+            </Box>
+          </Stack>
+
+          <Stack gap={4}>
+            <Animate {...animateProps}>
+              <Stack gap={1}>
+                <Typography variant="h2" maxWidth="25ch">
+                  Perguntas frequentes
+                </Typography>
+
+                <Typography>
+                  <Box component="strong" sx={{ color: "primary.main" }}>
+                    {googleProfile.rating.toLocaleString("pt-BR", {
+                      minimumFractionDigits: 1,
+                    })}{" "}
+                    ★
+                  </Box>{" "}
+                  no Google · {googleProfile.reviewCount.toLocaleString("pt-BR")}{" "}
+                  avaliações ·{" "}
+                  <TrackingWrapper
+                    section="faq"
+                    action="ver-avaliacoes-google"
+                    isGoogle={isGoogle}
+                  >
+                    <Box
+                      component="a"
+                      href={googleProfile.url}
+                      target="_blank"
+                      rel="noopener"
+                      sx={{ color: "inherit", fontWeight: 700 }}
+                    >
+                      ver avaliações
+                    </Box>
+                  </TrackingWrapper>
+                </Typography>
+              </Stack>
+            </Animate>
+
+            <Box>
+              {faqItems.map((item) => (
+                <Accordion
+                  key={item.question}
+                  disableGutters
+                  elevation={0}
+                  square
+                  sx={{
+                    borderTop: ".5px solid #d0d0d0",
+                    "&:last-of-type": { borderBottom: ".5px solid #d0d0d0" },
+                    "&::before": { display: "none" },
+                  }}
+                >
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    sx={{ px: 0, py: 1 }}
+                  >
+                    <Typography component="h3" sx={{ fontWeight: 700 }}>
+                      {item.question}
+                    </Typography>
+                  </AccordionSummary>
+
+                  <AccordionDetails sx={{ px: 0, pt: 0, pb: 3 }}>
+                    <Typography maxWidth="80ch">{item.answer}</Typography>
+                  </AccordionDetails>
+                </Accordion>
               ))}
             </Box>
           </Stack>

@@ -50,6 +50,12 @@ export const florianopolisData: ISiteData = { utmSourceMessages: {
     ],
     areaM2: 300,
     privateRooms: 13,
+    workstations: { value: "~40", label: "estações de trabalho" },
+    googleProfile: {
+      url: "https://www.google.com/maps?cid=14753241605424230328",
+      rating: 5,
+      reviewCount: 143,
+    },
     otherSpaces: ["2 salas de reunião e atendimento", "1 auditório"],
     foundingDate: "2018-06",
     foundingLabel: "desde junho de 2018",
@@ -117,7 +123,7 @@ export const florianopolisData: ISiteData = { utmSourceMessages: {
     heroImage: servicesHeroImage.src,
   },
   socials: {
-    instagram: "https://www.instagram.com/xyzcoworkingbc/",
+    instagram: "https://www.instagram.com/xyzcoworkingfloripa/",
     linkedin: "https://www.linkedin.com/company/coworkingxyz",
     tiktok: "https://www.tiktok.com/@xyz.coworking0",
     youtube: "https://www.youtube.com/@XYZcoworking1/shorts",

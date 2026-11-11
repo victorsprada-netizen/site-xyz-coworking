@@ -76,6 +76,6 @@ export const membroX: IServiceItem = {
           "Olá! Vi o plano Membro X no site e gostaria de saber mais sobre como funciona em Joinville.",
       },
     ],
-    floatingCtaMessage: "R$684/ano",
+    floatingCtaMessage: "R$744/ano",
   },
 };
