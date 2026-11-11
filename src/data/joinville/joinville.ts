@@ -39,6 +39,8 @@ export const joinvilleData: ISiteData = {
     neighborhood: "América",
     city: "Joinville",
     state: "SC",
+    postalCode: "89204-001",
+    geo: { latitude: -26.2896063, longitude: -48.8488628 },
     openingHours: [
       {
         days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -49,6 +51,12 @@ export const joinvilleData: ISiteData = {
     ],
     areaM2: 2400,
     privateRooms: 90,
+    workstations: { value: "~380", label: "posições de trabalho" },
+    googleProfile: {
+      url: "https://www.google.com/maps?cid=4471840907089357681",
+      rating: 4.8,
+      reviewCount: 709,
+    },
     otherSpaces: [
       "10 salas de reunião e atendimento",
       "1 espaço multiuso com cozinha completa para locação por período",
