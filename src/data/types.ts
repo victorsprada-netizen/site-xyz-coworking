@@ -13,6 +13,19 @@ export interface IServicePlan {
   [key: string]: any;
 }
 
+export interface IAddressPlan extends IServicePlan {
+  slug: string;
+  title: string;
+  included: [string];
+  period: "ano" | "mês";
+  paymentOption: {
+    label: string;
+    value: string;
+    note?: string;
+  };
+  annualSavings: string;
+}
+
 export interface IServiceItem {
   title: string;
   seoTitle: string;
@@ -41,11 +54,13 @@ export interface IServiceItem {
       subtitle: string;
       items: string[];
     };
-    plans: IServicePlan[];
     plansMessage?: string;
     plansMessageTarget?: string;
     floatingCtaMessage: string;
-  };
+  } & (
+    | { plans: IServicePlan[]; plansLayout?: never }
+    | { plans: readonly IAddressPlan[]; plansLayout: "address" }
+  );
 }
 
 export type TUtmSourceKeys = "googleads" | "instagram";

@@ -3,6 +3,7 @@ import PlaceIcon from "@mui/icons-material/Place";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import { addressPlans, addressPlansFloatingCta } from "@/data/address-plans";
 import { IServiceItem } from "@/data/types";
 
 export const enderecoFiscal: IServiceItem = {
@@ -57,37 +58,8 @@ export const enderecoFiscal: IServiceItem = {
         "Feito! Você já pode registrar ou transferir seu CNPJ",
       ],
     },
-    plansMessage: `Economize <strong>R$258</strong>
-<br />
-no plano anual`,
-    plans: [
-      {
-        price: 1290,
-        label: "Anual",
-        period: "Ano",
-        included: [
-          "Autorização para uso de endereço para abertura ou transferência de CNPJ",
-          "Autorização para uso de endereço para divulgação em mídias e no Google Meu Negócio",
-          "Gestão de correspondências e encomendas com notificação de recebimento.",
-          "Utilização dos espaços de coworking com <strong>50%</strong> de desconto",
-        ],
-        whatsappMessage:
-          "Olá! Vim do site e tenho interesse em contratar o plano anual de endereço fiscal.",
-      },
-      {
-        price: 129,
-        label: "Mensal",
-        period: "Mês",
-        included: [
-          "Autorização para uso de endereço para abertura ou transferência de CNPJ",
-          "Autorização para uso de endereço para divulgação em mídias e no Google Meu Negócio",
-          "Gestão de correspondências e encomendas com notificação de recebimento.",
-          "Utilização dos espaços de coworking com <strong>50%</strong> de desconto",
-        ],
-        whatsappMessage:
-          "Olá! Vim do site e tenho interesse em contratar o plano mensal de endereço fiscal.",
-      },
-    ],
-    floatingCtaMessage: "R$129/mês",
+    plans: addressPlans,
+    plansLayout: "address",
+    floatingCtaMessage: addressPlansFloatingCta,
   },
 };

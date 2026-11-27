@@ -3,6 +3,7 @@ import PlaceIcon from "@mui/icons-material/Place";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import { addressPlans, addressPlansFloatingCta } from "@/data/address-plans";
 import { IServiceItem } from "@/data/types";
 
 export const enderecoFiscal: IServiceItem = {
@@ -57,36 +58,8 @@ export const enderecoFiscal: IServiceItem = {
         "Pronto! Você já pode registrar ou transferir seu CNPJ",
       ],
     },
-    plansMessage: `Economize <strong>R$398</strong>
-<br />
-no plano anual`,
-    plans: [
-      {
-        price: 1390,
-        label: "Anual",
-        period: "Ano",
-        included: [
-          "Endereço fiscal e comercial para o seu CNPJ em um coworking que, desde 2006, é referência em Santa Catarina.",
-          "Gestão de correspondências e encomendas com notificação de recebimento.",
-          "Utilização dos espaços de coworking com <strong>30%</strong> de desconto",
-       
-        ],
-        whatsappMessage:
-          "Olá! Vim do site e tenho interesse em contratar o plano anual de endereço fiscal.",
-      },
-      {
-        price: 149,
-        label: "Mensal",
-        period: "Mês",
-        included: [
-          "Endereço fiscal e/ou comercial válido para CNPJ",
-          "Atendimento e triagem de correspondências",
-          "50% de desconto no aluguel de salas de reunião e estações de coworking",
-        ],
-        whatsappMessage:
-          "Olá! Vim do site e tenho interesse em contratar o plano mensal de endereço fiscal.",
-      },
-    ],
-    floatingCtaMessage: "R$149/mês",
+    plans: addressPlans,
+    plansLayout: "address",
+    floatingCtaMessage: addressPlansFloatingCta,
   },
 };
