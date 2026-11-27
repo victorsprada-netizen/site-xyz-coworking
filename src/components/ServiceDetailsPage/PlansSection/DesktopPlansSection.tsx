@@ -5,17 +5,22 @@ import { useState } from "react";
 import { PlanPeriodSelector } from "./PlanPeriodSelector";
 import { PlanCard } from "./PlanCard";
 import parse from "html-react-parser";
-import { IServiceItem } from "@/data/types";
+import type { IServicePlan } from "@/data/types";
 import Link from "next/link";
 
 export interface IDesktopPlansSectionProps {
-  service: IServiceItem;
+  plans: IServicePlan[];
+  plansMessage?: string;
+  plansMessageTarget?: string;
 }
 
-export const DesktopPlansSection = ({ service }: IDesktopPlansSectionProps) => {
-  const { plans, plansMessage, plansMessageTarget } = service.detailsPage;
-
+export const DesktopPlansSection = ({
+  plans,
+  plansMessage,
+  plansMessageTarget,
+}: IDesktopPlansSectionProps) => {
   const [selectedPlan, setSelectedPlan] = useState<number>(0);
+  const hasSinglePlan = plans.length === 1;
 
   return (
     <Box>
@@ -23,17 +28,11 @@ export const DesktopPlansSection = ({ service }: IDesktopPlansSectionProps) => {
         <Stack gap={4}>
           <Stack
             gap={2}
-            alignItems={
-              service.detailsPage.plans.length === 1 ? "center" : "flex-end"
-            }
+            alignItems={hasSinglePlan ? "center" : "flex-end"}
           >
             <Stack
               direction="row"
-              justifyContent={
-                service.detailsPage.plans.length === 1
-                  ? "center"
-                  : "space-between"
-              }
+              justifyContent={hasSinglePlan ? "center" : "space-between"}
               width="100%"
               gap={12}
             >
@@ -52,9 +51,7 @@ export const DesktopPlansSection = ({ service }: IDesktopPlansSectionProps) => {
               <Typography
                 color="secondary"
                 lineHeight={1}
-                textAlign={
-                  service.detailsPage.plans.length === 1 ? "center" : "right"
-                }
+                textAlign={hasSinglePlan ? "center" : "right"}
                 component={plansMessageTarget ? Link : "span"}
                 href={plansMessageTarget}
               >

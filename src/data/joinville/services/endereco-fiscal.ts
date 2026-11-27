@@ -3,6 +3,7 @@ import PlaceIcon from "@mui/icons-material/Place";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import { addressPlans, addressPlansFloatingCta } from "@/data/address-plans";
 import { IServiceItem } from "@/data/types";
 
 export const enderecoFiscal: IServiceItem = {
@@ -57,53 +58,8 @@ export const enderecoFiscal: IServiceItem = {
         "Use o endereço para registrar ou transferir seu CNPJ",
       ],
     },
-    //     plansMessage: `Economize <strong>R$378</strong>
-    // <br />
-    // no plano anual`,
-    plans: [
-      {
-        price: 1290,
-        label: "Anual",
-        period: "Ano",
-        included: [
-          "Endereço fiscal válido para CNPJ",
-          "Triagem e notificação de correspondências",
-          "50% de desconto no uso de salas de reunião e coworking",
-        ],
-        whatsappMessage:
-          "Olá, vim pelo anúncio do Google e tenho interesse no Plano Anual de Endereço Fiscal em Joinville!",
-        whatsappMessageOriginal:
-          "Olá! Tenho interesse no plano anual de endereço fiscal em Joinville.",
-      },
-      { customPriceText: "A partir de",
-        price: 139,
-        label: "Mensal",
-        period: "Mês",
-        included: [
-           "Autorização para uso de endereço para abertura ou transferência de CNPJ",
-          "Autorização para uso de endereço para divulgação em mídias e no Google Meu Negócio",
-          "Gestão de correspondências e encomendas com notificação de recebimento.",
-          "Utilização dos espaços de coworking com <strong>50%</strong> de desconto",
-       
-        ],
-        whatsappMessage:
-          "Olá, vim pelo anúncio do Google e tenho interesse no Plano Mensal de Endereço Fiscal em Joinville!",
-        whatsappMessageOriginal:
-          "Olá! Tenho interesse no plano mensal de endereço fiscal em Joinville.",
-      },
-      // {
-      //   price: 189,
-      //   label: "Mensal",
-      //   period: "Mês",
-      //   included: [
-      //     "Endereço fiscal e/ou comercial válido para CNPJ",
-      //     "Triagem e notificação de correspondências",
-      //     "50% de desconto no uso de salas de reunião e coworking",
-      //   ],
-      //   whatsappMessage:
-      //     "Olá! Tenho interesse no plano mensal de endereço fiscal em Joinville.",
-      // },
-    ],
-    floatingCtaMessage: "R$1290/ano",
+    plans: addressPlans,
+    plansLayout: "address",
+    floatingCtaMessage: addressPlansFloatingCta,
   },
 };

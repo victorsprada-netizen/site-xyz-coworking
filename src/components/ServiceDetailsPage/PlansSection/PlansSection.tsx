@@ -2,6 +2,7 @@ import { IServiceItem } from "@/data/types";
 import { MobilePlansSection } from "./MobilePlansSection";
 import { ResponsiveComponent } from "@/components/common/ResponsiveComponent";
 import { DesktopPlansSection } from "./DesktopPlansSection";
+import { AddressPlansSection } from "./AddressPlansSection";
 import { Box } from "@mui/material";
 
 export interface IPlansSectionProps {
@@ -9,6 +10,10 @@ export interface IPlansSectionProps {
 }
 
 export const PlansSection = ({ service }: IPlansSectionProps) => {
+  const { plans, plansLayout, plansMessage, plansMessageTarget } =
+    service.detailsPage;
+  const hasAddressPlans = plansLayout === "address";
+
   return (
     <Box
       id="planos"
@@ -36,11 +41,27 @@ export const PlansSection = ({ service }: IPlansSectionProps) => {
         },
       }}
     >
-      <Box sx={{ position: "relative", zIndex: 1 }}>
-        <ResponsiveComponent
-          xs={<MobilePlansSection service={service} />}
-          md={<DesktopPlansSection service={service} />}
-        />
+      <Box
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          width: hasAddressPlans ? "100%" : undefined,
+        }}
+      >
+        {hasAddressPlans ? (
+          <AddressPlansSection plans={plans} />
+        ) : (
+          <ResponsiveComponent
+            xs={<MobilePlansSection plans={plans} plansMessage={plansMessage} />}
+            md={
+              <DesktopPlansSection
+                plans={plans}
+                plansMessage={plansMessage}
+                plansMessageTarget={plansMessageTarget}
+              />
+            }
+          />
+        )}
       </Box>
     </Box>
   );

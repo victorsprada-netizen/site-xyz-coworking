@@ -5,14 +5,17 @@ import { useState } from "react";
 import { PlanPeriodSelector } from "./PlanPeriodSelector";
 import { PlanCard } from "./PlanCard";
 import parse from "html-react-parser";
-import { IServiceItem } from "@/data/types";
+import type { IServicePlan } from "@/data/types";
 
 export interface IMobilePlansSectionProps {
-  service: IServiceItem;
+  plans: IServicePlan[];
+  plansMessage?: string;
 }
 
-export const MobilePlansSection = ({ service }: IMobilePlansSectionProps) => {
-  const { plans, plansMessage } = service.detailsPage;
+export const MobilePlansSection = ({
+  plans,
+  plansMessage,
+}: IMobilePlansSectionProps) => {
 
   const [selectedPlan, setSelectedPlan] = useState<number>(0);
 
