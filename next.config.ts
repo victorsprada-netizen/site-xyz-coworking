@@ -18,6 +18,18 @@ const nextConfig: NextConfig = {
     ],
   },
   reactStrictMode: true,
+  async headers() {
+    if (process.env.NEXT_PUBLIC_SITE_KEY !== "florianopolis") {
+      return [];
+    }
+
+    return [
+      {
+        source: "/:prefix(google)?/tabela-de-precos/:suffix(google)?",
+        headers: [{ key: "X-Robots-Tag", value: "googlebot: noindex" }],
+      },
+    ];
+  },
   async rewrites() {
     return [
       // Suporta /google no início: /google, /google/servicos
