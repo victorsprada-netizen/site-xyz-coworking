@@ -25,7 +25,7 @@ export const addressPlans = [
     slug: "completo",
     label: "Completo",
     title: "Endereço Completo",
-    included: ["Recebimento de correspondências e 50% de desconto em salas."],
+    included: ["Recebimento de encomendas e 50% de desconto em salas."],
     price: 144,
     period: "mês",
     paymentOption: { label: "Plano anual:", value: "R$ 1.445" },
